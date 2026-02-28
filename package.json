@@ -1,9 +1,7 @@
 {
     "name": "orcas-angular",
-    "version": "1.0.1",
+    "version": "1.0.5",
     "description": "A collection of reusable Angular utilities and services, with support for Tauri and Capacitor.",
-    "main": "index.ts",
-    "types": "index.ts",
     "keywords": [
         "angular",
         "tauri",
@@ -14,9 +12,14 @@
     ],
     "author": "Racso",
     "license": "MPL-2.0",
+    "scripts": {
+        "build": "ng-packagr -p ng-package.json",
+        "release": "npm run build && npm publish dist/"
+    },
     "peerDependencies": {
         "@angular/common": "^21.0.0",
         "@angular/core": "^21.0.0",
+        "@angular/router": "^21.0.0",
         "@angular/cdk": "^21.0.3",
         "rxjs": "~7.8.0"
     },
@@ -25,5 +28,11 @@
         "@tauri-apps/plugin-fs": "^2.0.0",
         "@capacitor/filesystem": "^6.0.0",
         "@capacitor/preferences": "^6.0.0"
+    },
+    "devDependencies": {
+        "@angular/compiler": "^21.0.0",
+        "@angular/compiler-cli": "^21.0.0",
+        "ng-packagr": "^21.0.0",
+        "typescript": "~5.9.0"
     }
 }
