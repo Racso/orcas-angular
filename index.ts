@@ -18,4 +18,5 @@ export * from './storage/tauri-files.service';
 export * from './storage/capacitor-files.service';
 export * from './storage/local-storage-files.service';
 export * from './theme/theme.service';
+export * from './log/index';
 export * from './ui/context-menu/index';
