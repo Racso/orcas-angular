@@ -1,0 +1,29 @@
+﻿import {inject, Injectable} from '@angular/core';
+import {ConsoleHook} from "@/lib/orcas-angular/dev/console-hook";
+
+@Injectable({
+    providedIn: 'root'
+})
+class DebugService {
+    private exampleService: ExampleService = inject(ExampleService);
+
+    constructor() {
+        ConsoleHook.register("example", this.getExample);
+        ConsoleHook.register("nop", this.nop);
+    }
+
+    private getExample = async () => {
+        return this.exampleService;
+    };
+
+    private nop() {
+        console.log("nop");
+        return "1";
+    }
+}
+
+class ExampleService {
+    async foo() {
+        return "bar";
+    }
+}
