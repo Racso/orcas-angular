@@ -1,6 +1,6 @@
 {
     "name": "orcas-angular",
-    "version": "1.0.7",
+    "version": "2.0.0",
     "description": "A collection of reusable Angular utilities and services, with support for Tauri and Capacitor.",
     "keywords": [
         "angular",
