@@ -15,7 +15,7 @@ Angular service and pipe for loading and applying multi-language translations at
 `LocalizationService` is the concrete implementation. It loads a JSON translation file over HTTP and exposes a reactive API based on Angular signals.
 
 **Key features:**
-- Loads translations from a configurable JSON file path (default: `assets/translations.json`).
+- Loads translations from a configurable JSON string (default: `{}`).
 - Persists the active language in `localStorage` and restores it on startup.
 - Supports **nested keys** via dot notation (e.g. `"settings.title"`).
 - Supports **pluralization** via the `__1` suffix convention (e.g. a key named `"items__1"` is used when `params.count === 1`).
