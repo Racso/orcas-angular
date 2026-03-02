@@ -1,4 +1,4 @@
-﻿import {Signal} from '@angular/core';
+﻿import { Signal } from '@angular/core';
 
 export interface ILocalizationService {
     /** Emits the current language as a signal */
@@ -12,6 +12,9 @@ export interface ILocalizationService {
 
     /** Sets the current active language */
     setActiveLanguage(lang: string): void;
+
+    /** Initializes the service with a JSON string of translations */
+    init(translationsJson: string, defaultLanguage?: string, storageKey?: string): Promise<void>;
 
     /** Translates a key, possibly with params and for a specific language */
     translate(key: string, params?: any, language?: string): string;

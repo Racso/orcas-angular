@@ -3,5 +3,16 @@
     "lib": {
         "entryFile": "index.ts"
     },
-    "dest": "dist"
+    "dest": "dist",
+    "assets": [
+        "README.md",
+        {
+            "glob": "**/README.md",
+            "input": "./",
+            "output": "./",
+            "ignore": [
+                "node_modules/**/*"
+            ]
+        }
+    ]
 }

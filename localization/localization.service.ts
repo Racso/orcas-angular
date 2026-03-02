@@ -1,5 +1,4 @@
 ﻿import { computed, inject, Injectable, signal } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ILocalizationService } from './localization.interface';
 
 @Injectable({
@@ -15,14 +14,12 @@ export class LocalizationService implements ILocalizationService {
   private $language: ReturnType<typeof signal<string>>;
   public $currentLang = computed(() => this.$language());
 
-  private http = inject(HttpClient);
-
   constructor() {
     this.$language = signal(this.getStoredLanguage());
   }
 
   public async init(
-    jsonPath: string = 'assets/translations.json',
+    translationsJson: string = '{}',
     defaultLanguage: string = 'en',
     storageKey: string = 'orcas-language'
   ): Promise<void> {
@@ -31,11 +28,11 @@ export class LocalizationService implements ILocalizationService {
     this.$language.set(this.getStoredLanguage());
 
     try {
-      this.translations = await this.http.get(jsonPath).toPromise();
+      this.translations = JSON.parse(translationsJson);
       this.loaded = true;
     }
     catch (err) {
-      console.error('Failed to load translations:', err);
+      console.error('Failed to parse translations:', err);
     }
   }
 

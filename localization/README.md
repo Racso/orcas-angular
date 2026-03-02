@@ -29,7 +29,7 @@ Angular service and pipe for loading and applying multi-language translations at
 
 | Method | Description |
 |---|---|
-| `init(jsonPath?, defaultLanguage?, storageKey?)` | Loads the translation file and configures defaults. Call during app bootstrap. |
+| `init(translationsJson?, defaultLanguage?, storageKey?)` | Parses the translation JSON string and configures defaults. Call during app bootstrap. |
 | `getLanguage()` | Returns the current language code. |
 | `getDefaultLanguage()` | Returns the default/fallback language code. |
 | `setActiveLanguage(lang)` | Switches the active language and persists it. |
@@ -62,7 +62,8 @@ Angular service and pipe for loading and applying multi-language translations at
 
 ```typescript
 // Bootstrap (e.g. in APP_INITIALIZER):
-await servicesInit.init(LocalizationService, 'assets/translations.json', 'en');
+const translations = await fetch('assets/translations.json').then(res => res.text());
+await servicesInit.init(LocalizationService, translations, 'en');
 
 // In a template:
 {{ 'greeting' | localize: { name: 'World' } }}
